@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemachandran K - Futuristic Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --neon-cyan: #00ffff;
+      --neon-purple: #ff00ff;
+      --neon-orange: #ff6600;
+      --neon-green: #00ff41;
+      --dark-bg: #0a0a0a;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--dark-bg);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Animated Matrix Background */
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: linear-gradient(45deg, #0a0a0a, #1a0a1a, #0a1a0a);
+      background-size: 400% 400%;
+      animation: matrixShift 20s ease infinite;
+    }
+
+    @keyframes matrixShift {
+      0%, 100% { background-position: 0% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 50% 100%; }
+      75% { background-position: 0% 0%; }
+    }
+
+    /* 3D Floating Geometric Shapes */
+    .geometric-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float3D 15s infinite linear;
+    }
+
+    .shape:nth-child(1) { 
+      left: 10%; 
+      animation-delay: 0s; 
+      width: 60px; 
+      height: 60px; 
+      background: linear-gradient(45deg, var(--neon-cyan), transparent);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .shape:nth-child(2) { 
+      left: 20%; 
+      animation-delay: -3s; 
+      width: 40px; 
+      height: 40px; 
+      background: linear-gradient(45deg, var(--neon-purple), transparent);
+      border-radius: 50%;
+    }
+    
+    .shape:nth-child(3) { 
+      left: 35%; 
+      animation-delay: -6s; 
+      width: 80px; 
+      height: 80px; 
+      background: linear-gradient(45deg, var(--neon-orange), transparent);
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    }
+    
+    .shape:nth-child(4) { 
+      left: 50%; 
+      animation-delay: -9s; 
+      width: 50px; 
+      height: 50px; 
+      background: linear-gradient(45deg, var(--neon-green), transparent);
+      transform: rotate(45deg);
+    }
+    
+    .shape:nth-child(5) { 
+      left: 70%; 
+      animation-delay: -12s; 
+      width: 70px; 
+      height: 70px; 
+      background: linear-gradient(45deg, var(--neon-cyan), transparent);
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    }
+    
+    .shape:nth-child(6) { 
+      left: 85%; 
+      animation-delay: -15s; 
+      width: 35px; 
+      height: 35px; 
+      background: linear-gradient(45deg, var(--neon-purple), transparent);
+      clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    }
+
+    @keyframes float3D {
+      0% {
+        transform: translateY(100vh) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.3;
+      }
+      90% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-100px) rotateX(360deg) rotateY(360deg) rotateZ(360deg) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .hologram-container {
+      position: relative;
+      transform-style: preserve-3d;
+      animation: hologramRotate 10s infinite linear;
+    }
+
+    @keyframes hologramRotate {
+      0% { transform: rotateY(0deg) rotateX(5deg); }
+      100% { transform: rotateY(360deg) rotateX(5deg); }
+    }
+
+    .profile-hologram {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--neon-cyan);
+      filter: drop-shadow(0 0 30px var(--neon-cyan)) hue-rotate(180deg) saturate(1.5);
+      animation: profileGlitch 4s infinite;
+      position: relative;
+    }
+
+    @keyframes profileGlitch {
+      0%, 90%, 100% { transform: translateX(0); }
+      91% { transform: translateX(-2px); filter: drop-shadow(0 0 30px var(--neon-purple)); }
+      92% { transform: translateX(2px); filter: drop-shadow(0 0 30px var(--neon-orange)); }
+      93% { transform: translateX(-2px); filter: drop-shadow(0 0 30px var(--neon-green)); }
+      94% { transform: translateX(0); filter: drop-shadow(0 0 30px var(--neon-cyan)); }
+    }
+
+    .hologram-ring {
+      position: absolute;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      border-top-color: var(--neon-cyan);
+      border-right-color: var(--neon-purple);
+      animation: ringRotate 3s infinite linear;
+    }
+
+    .hologram-ring:nth-child(1) {
+      width: 320px;
+      height: 320px;
+      top: -10px;
+      left: -10px;
+    }
+
+    .hologram-ring:nth-child(2) {
+      width: 350px;
+      height: 350px;
+      top: -25px;
+      left: -25px;
+      animation-direction: reverse;
+      animation-duration: 4s;
+      border-top-color: var(--neon-orange);
+      border-right-color: var(--neon-green);
+    }
+
+    @keyframes ringRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hero-title {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple), var(--neon-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 1rem;
+      position: relative;
+      animation: textGlow 2s infinite alternate;
+      text-shadow: 0 0 50px rgba(0, 255, 255, 0.8);
+    }
+
+    @keyframes textGlow {
+      0% { filter: brightness(1) contrast(1); }
+      100% { filter: brightness(1.3) contrast(1.2); }
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--neon-cyan);
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      animation: subtitlePulse 3s infinite;
+      text-shadow: 0 0 20px var(--neon-cyan);
+    }
+
+    @keyframes subtitlePulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .quantum-btn {
+      position: relative;
+      padding: 20px 40px;
+      background: transparent;
+      border: 2px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      animation: quantumGlow 2s infinite alternate;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .quantum-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .quantum-btn:hover::before {
+      left: 100%;
+    }
+
+    .quantum-btn:hover {
+      color: var(--dark-bg);
+      background: var(--neon-cyan);
+      box-shadow: 0 0 50px var(--neon-cyan), inset 0 0 20px rgba(0, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    @keyframes quantumGlow {
+      0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+      100% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.2); }
+    }
+
+    /* Sections */
+    .section {
+      min-height: 100vh;
+      padding: 100px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 4rem;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      animation: titleScan 3s infinite;
+    }
+
+    @keyframes titleScan {
+      0%, 100% { text-shadow: 0 0 10px var(--neon-cyan); }
+      50% { text-shadow: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple); }
+    }
+
+    /* Cyber Cards */
+    .cyber-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 3rem;
+    }
+
+    .cyber-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    .cyber-card:nth-child(even) {
+      animation-delay: 3s;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px) rotateX(0deg); }
+      50% { transform: translateY(-10px) rotateX(2deg); }
+    }
+
+    .cyber-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+        rgba(0, 255, 255, 0.1) 0%, 
+        transparent 25%, 
+        transparent 75%, 
+        rgba(255, 0, 255, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cyber-card:hover::before {
+      opacity: 1;
+    }
+
+    .cyber-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-color: var(--neon-cyan);
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px var(--neon-cyan),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .cyber-card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cyber-icon {
+      font-size: 2.5rem;
+      margin-right: 20px;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+    }
+
+    .cyber-card h3 {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.4rem;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .cyber-card p {
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tech-tag {
+      padding: 8px 16px;
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--neon-cyan);
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      background: rgba(0, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+    }
+
+    /* Floating Navigation */
+    .floating-nav {
+      position: fixed;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .nav-orb {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.3);
+      border: 1px solid var(--neon-cyan);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+
+    .nav-orb.active {
+      background: var(--neon-cyan);
+      box-shadow: 0 0 25px var(--neon-cyan);
+      transform: scale(1.5);
+    }
+
+    .nav-orb:hover {
+      transform: scale(1.3);
+      background: var(--neon-purple);
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 20px var(--neon-purple);
+    }
+
+    /* Contact Matrix */
+    .contact-matrix {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 3rem;
+    }
+
+    .contact-node {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .contact-node::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, var(--neon-cyan), transparent);
+      animation: contactSpin 4s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-node:hover::before {
+      opacity: 0.1;
+    }
+
+    @keyframes contactSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .contact-node:hover {
+      transform: translateY(-10px);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+    }
+
+    .contact-link {
+      color: var(--neon-cyan);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-link:hover {
+      color: var(--neon-purple);
+      text-shadow: 0 0 10px var(--neon-purple);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .floating-nav { display: none; }
+      
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .profile-hologram {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .hologram-ring:nth-child(1) {
+        width: 270px;
+        height: 270px;
+        top: -10px;
+        left: -10px;
+      }
+      
+      .hologram-ring:nth-child(2) {
+        width: 290px;
+        height: 290px;
+        top: -20px;
+        left: -20px;
+      }
+      
+      .cyber-grid,
+      .contact-matrix {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* About Section Special Styling */
+    .about-content {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 50px;
+      backdrop-filter: blur(20px);
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+      animation: scanLine 3s infinite;
+    }
+
+    @keyframes scanLine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Matrix Background -->
+  <div class="matrix-bg"></div>
+
+  <!-- Geometric Background -->
+  <div class="geometric-bg">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <!-- Floating Navigation -->
+  <div class="floating-nav">
+    <div class="nav-orb active" onclick="scrollToSection('home')"></div>
+    <div class="nav-orb" onclick="scrollToSection('about')"></div>
+    <div class="nav-orb" onclick="scrollToSection('skills')"></div>
+    <div class="nav-orb" onclick="scrollToSection('projects')"></div>
+    <div class="nav-orb" onclick="scrollToSection('contact')"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hologram-container">
+      <div class="profile-hologram">
+        <div class="hologram-ring"></div>
+        <div class="hologram-ring"></div>
+        <img src="image/profile image.jpg" alt="Profile Picture" class="profile-image">
+      </div>
+    </div>
+    <h1 class="hero-title">HEMACHANDRAN K</h1>
+    <p class="hero-subtitle">AI & Data Science Engineer | Full-Stack Developer | Future Architect</p>
+    <a href="#" class="quantum-btn" onclick="alert('Resume downloaded! (This is a demo)')">📄 Download Resume</a>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <p>I'm a passionate final-year AI & Data Science student who thrives at the intersection of artificial intelligence and web development. My journey combines the analytical power of machine learning with the creative aspects of full-stack development, allowing me to build intelligent, user-centric applications that shape the future.</p>
+        <br>
+        <p>With expertise spanning from neural networks to responsive design, I transform complex problems into elegant, functional solutions. My goal is to leverage cutting-edge technology to create experiences that not only meet user needs but exceed their wildest expectations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="cyber-grid">
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">💻</div>
+            <h3>Programming Languages</h3>
+          </div>
+          <p>Master of multiple programming paradigms with deep expertise in modern development.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+          </div>
+        </div>
+        
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">🛠️</div>
+            <h3>Frameworks & Tools</h3>
+          </div>
+          <p>Proficient in cutting-edge frameworks and development tools for rapid prototyping and deployment.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">Bootstrap</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">VS Code</span>
+          </div>
+        </div>
+        
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">🧠</div>
+            <h3>AI & Machine Learning</h3>
+          </div>
+          <p>Specialized in artificial intelligence, machine learning algorithms, and data science methodologies.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">Neural Networks</span>
+            <span class="tech-tag">Data Analysis</span>
+            <span class="tech-tag">Deep Learning</span>
+          </div>
+        </div>
+        
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">🎨</div>
+            <h3>Design & UX</h3>
+          </div>
+          <p>Creating intuitive and visually stunning user experiences that bridge functionality and aesthetics.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">UI/UX Design</span>
+            <span class="tech-tag">Responsive Design</span>
+            <span class="tech-tag">User Research</span>
+            <span class="tech-tag">Prototyping</span>
+          </div>
+        </div>
+        
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">🤝</div>
+            <h3>Leadership & Communication</h3>
+          </div>
+          <p>Strong interpersonal skills with experience in team leadership and cross-functional collaboration.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Team Leadership</span>
+            <span class="tech-tag">Communication</span>
+            <span class="tech-tag">Problem Solving</span>
+            <span class="tech-tag">Adaptability</span>
+          </div>
+        </div>
+        
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">📊</div>
+            <h3>Project Management</h3>
+          </div>
+          <p>Experienced in agile methodologies and strategic planning for successful project delivery.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Agile</span>
+            <span class="tech-tag">Strategic Planning</span>
+            <span class="tech-tag">Risk Management</span>
+            <span class="tech-tag">Quality Assurance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="cyber-grid">
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">🌟</div>
+            <h3>Brahmastra Website</h3>
+          </div>
+          <p>A dynamic symposium website featuring real-time updates, event management, and interactive user interfaces. Built with modern web technologies for optimal performance and user experience.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Bootstrap</span>
+          </div>
+        </div>
+        
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">🤖</div>
+            <h3>AI Analytics Dashboard</h3>
+          </div>
+          <p>An intelligent dashboard for data visualization and analytics, featuring machine learning insights and interactive charts for business intelligence and decision making.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">TensorFlow</span>
+          </div>
+        </div>
+        
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <div class="cyber-icon">📚</div>
+            <h3>Smart Learning Platform</h3>
+          </div>
+          <p>An adaptive learning platform using AI to personalize educational content based on student performance patterns and learning preferences for optimal knowledge retention.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">Node.js</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Connect With Me</h2>
+      <div class="contact-matrix">
+        <div class="contact-node">
+          <div class="contact-icon">📧</div>
+          <h3 style="font-family: 'Orbitron', monospace; color: var(--neon-cyan); margin-bottom: 15px;">Email</h3>
+          <a href="mailto:hemachandranchandran2@gmail.com" class="contact-link">
+            hemachandranchandran2@gmail.com
+          </a>
+        </div>
+        
+        <div class="contact-node">
+          <div class="contact-icon">📱</div>
+          <h3 style="font-family: 'Orbitron', monospace; color: var(--neon-cyan); margin-bottom: 15px;">Phone</h3>
+          <a href="tel:+917904365012" class="contact-link">
+            +91 7904365012
+          </a>
+        </div>
+        
+        <div class="contact-node">
+          <div class="contact-icon">💼</div>
+          <h3 style="font-family: 'Orbitron', monospace; color: var(--neon-cyan); margin-bottom: 15px;">LinkedIn</h3>
+          <a href="https://linkedin.com/in/hemachandran-karthikeyan" target="_blank" class="contact-link">
+            Connect on LinkedIn
+          </a>
+        </div>
+        
+        <div class="contact-node">
+          <div class="contact-icon">🔗</div>
+          <h3 style="font-family: 'Orbitron', monospace; color: var(--neon-cyan); margin-bottom: 15px;">GitHub</h3>
+          <a href="https://github.com/Heman-5012" target="_blank" class="contact-link">
+            View My Projects
+          </a>
+        </div>
+      </div>
+      
+      <!-- Additional Contact Info -->
+      <div style="text-align: center; margin-top: 4rem;">
+        <div class="cyber-card" style="max-width: 600px; margin: 0 auto;">
+          <div class="cyber-card-header" style="justify-content: center;">
+            <div class="cyber-icon">🎓</div>
+            <h3>Education & Location</h3>
+          </div>
+          <p><strong>B.E. Artificial Intelligence & Data Science</strong><br>
+          Chettinad College of Engineering and Technology, Puliyur<br>
+          (2022 - 2026) | CGPA: 6.8</p>
+          <p style="margin-top: 20px; color: var(--neon-cyan);">
+            <strong>📍 Location:</strong> Coimbatore, Tamil Nadu, India
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: var(--glass); border-top: 1px solid var(--glass-border); backdrop-filter: blur(20px); text-align: center; padding: 30px 20px; margin-top: 50px;">
+    <p style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">
+      © 2025 Hemachandran K | Crafted with 💎 and ⚡
+    </p>
+    <p style="opacity: 0.7; margin-top: 10px;">
+      "Building the future, one line of code at a time"
+    </p>
+  </footer>
+
+  <script>
+    // Smooth scroll to section
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      element.scrollIntoView({ behavior: 'smooth' });
+      
+      // Update active nav orb
+      document.querySelectorAll('.nav-orb').forEach(orb => orb.classList.remove('active'));
+      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const index = sections.indexOf(sectionId);
+      if (index !== -1) {
+        document.querySelectorAll('.nav-orb')[index].classList.add('active');
+      }
+    }
+
+    // Update active navigation on scroll
+    function updateActiveNav() {
+      const sections = document.querySelectorAll('section');
+      const navOrbs = document.querySelectorAll('.nav-orb');
+      
+      let current = '';
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navOrbs.forEach((orb, index) => {
+        orb.classList.remove('active');
+        const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+        if (sections[index] === current) {
+          orb.classList.add('active');
+        }
+      });
+    }
+
+    // Enhanced hover effects
+    document.querySelectorAll('.cyber-card, .contact-node').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-15px) scale(1.02) rotateX(5deg)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+      });
+    });
+
+    // Quantum button effect
+    document.querySelector('.quantum-btn').addEventListener('click', function(e) {
+      // Create ripple effect
+      let ripple = document.createElement('span');
+      let rect = this.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+      let y = e.clientY - rect.top;
+      
+      ripple.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(0, 255, 255, 0.6);
+        transform: translate(-50%, -50%);
+        animation: quantum-ripple 0.6s ease-out;
+        pointer-events: none;
+      `;
+      
+      this.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
+    });
+
+    // Add quantum ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes quantum-ripple {
+        0% { width: 0; height: 0; opacity: 1; }
+        100% { width: 300px; height: 300px; opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Scroll event listener
+    window.addEventListener('scroll', updateActiveNav);
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add entrance animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.cyber-card, .contact-node, .about-content').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(50px)';
+        el.style.transition = 'all 0.8s ease';
+        observer.observe(el);
+      });
+    });
+
+    // Add parallax effect to geometric shapes
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const shapes = document.querySelectorAll('.shape');
+      shapes.forEach((shape, index) => {
+        const speed = 0.5 + (index * 0.1);
+        shape.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+  </script>
